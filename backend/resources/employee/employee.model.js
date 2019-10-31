@@ -19,6 +19,10 @@ const employeeSchema = new mongoose.Schema({
   createdDate: {
     type: Date,
     default: new Date()
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
   }
 })
 

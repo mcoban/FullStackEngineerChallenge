@@ -25,7 +25,10 @@ const signUp = async (req, res) => {
   try {
     const employee = await Employee.create(req.body)
     const token = newToken(employee)
-    return res.status(201).send({ token })
+    return res.status(201).send({
+      user: employee,
+      token: token
+    })
   } catch (err) {
     return res.status(500).end()
   }
@@ -38,7 +41,8 @@ const signIn = async (req, res) => {
 
   try {
     
-    const employee = await Employee.findOne({ email: req.body.email }).exec()
+    const employee = await Employee.findOne({ email: req.body.email })
+      .exec()
     const invalid = { message: 'invalid email or password' }
 
     if (!employee) {
@@ -52,7 +56,10 @@ const signIn = async (req, res) => {
     }
 
     const token = newToken(employee)
-    return res.status(201).send({ token })
+    return res.status(201).send({
+      user: employee,
+      token: token
+    })
   } catch (err) {
     console.log(err)
     res.status(500).end()
@@ -80,5 +87,5 @@ const protect = async (req, res, next) => {
 
 
 module.exports = {
-  signUp, signIn, newToken, verifyToken
+  signUp, signIn, newToken, verifyToken, protect
 }

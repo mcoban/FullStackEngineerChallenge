@@ -1,4 +1,5 @@
 const { Employee } = require('./employee.model')
+const { protect } = require('../../utils/auth')
 
 const me = (req, res) => {
   res.json({
@@ -28,8 +29,21 @@ const getOne = (req, res) => {
   res.json(id)
 }
 
+const getAll = async (req, res) => {
+  try {
+    const users = await Employee.find({}).exec()
+    res.json({
+      users: users
+    })
+  } catch (err) {
+    console.log(err)
+    res.status(400).end()
+  }
+}
+
 module.exports = {
   me,
   updateMe,
-  getOne
+  getOne,
+  getAll
 }
