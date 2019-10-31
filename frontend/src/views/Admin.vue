@@ -31,14 +31,17 @@
                   <td>{{ user.email }}</td>
                   <td>{{ user.isAdmin }}</td>
                   <td>
-                    <a href="#">Delete</a>
+                    <a @click="deleteUser(user._id)" href="#">Delete</a>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-        <div v-if="activeSection == 'reviews'" class="reviews">Reviews</div>
+        <div v-if="activeSection == 'reviews'" class="reviews">
+          <span v-if="loading == true" class="loading">Please wait..</span>
+          
+        </div>
         <div v-if="activeSection == 'assignments'" class="assignments">Assignments</div>
       </div>
     </div>
@@ -72,8 +75,17 @@ export default {
           this.loading = false
         })
     },
+    deleteUser (id) {
+      axios.delete(`http://localhost:3000/employee/${id}`)
+      this.$router.push('/admin')
+    },
     showReviews () {
       this.activeSection = 'reviews'
+      axios(`http://localhost:3000/reviews/all`)
+        .then(res => {
+          this.users = res.data.users
+          this.loading = false
+        })
     },
     showAssignments () {
       this.activeSection = 'assignments'

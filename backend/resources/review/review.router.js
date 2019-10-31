@@ -1,10 +1,10 @@
 const { Router } = require('express')
+const { all } = require('./review.controller')
 
 const router = Router()
 
 router.route('/')
-    .get() // for the get all reviews
-    .post() // for the create a new review
+    .get(all) // for the get all reviews
 
 
 router.route('/:id')

@@ -6,9 +6,8 @@ const { config } = require('./config')
 const { connect } = require('./utils/db')
 const { signUp, signIn } = require('./utils/auth')
 // Router Defines
-//const adminRouter = require('./resources/admin/admin.router')
 const employeeRoutuer = require('./resources/employee/employee.router')
-//const reviewRouter = require('./resources/review/review.router')
+const reviewRouter = require('./resources/review/review.router')
 
 const app = express()
 app.disable('x-powered-by')
@@ -21,7 +20,7 @@ app.use(morgan('dev'))
 app.use('/signup', signUp)
 app.use('/signin', signIn)
 app.use('/employee', employeeRoutuer)
-//app.use('/review', reviewRouter)
+app.use('/review', reviewRouter)
 
 app.get('/', (req, res) => {
   res.json({

@@ -7,7 +7,7 @@ const reviewSchema = new mongoose.Schema({
   }
 })
 
-const reviewItemSchema = new mongoose({
+const reviewItemSchema = new mongoose.Schema({
   review: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'review'
@@ -23,7 +23,7 @@ const reviewItemSchema = new mongoose({
   }
 })
 
-const reviewAssignmentSchema = new mongoose({
+const reviewAssignmentSchema = new mongoose.Schema({
   from: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'employee',
