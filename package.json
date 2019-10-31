@@ -1,0 +1,33 @@
+{
+  "name": "fullstackengineerchallenge",
+  "version": "1.0.0",
+  "description": "This is the code challenge for PayPay Engineering",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcoban/FullStackEngineerChallenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcoban/FullStackEngineerChallenge/issues"
+  },
+  "homepage": "https://github.com/mcoban/FullStackEngineerChallenge#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "cuid": "^2.1.4",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.13",
+    "morgan": "^1.9.1",
+    "validator": "^10.9.0"
+  }
+}
