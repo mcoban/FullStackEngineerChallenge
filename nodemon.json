@@ -11,9 +11,7 @@
   },
   "runOnChangeOnly": false,
   "watch": [
-    "backend/**/*.js",
-    "backend/**/*.graphql",
-    "backend/**/*.gql"
+    "backend/**/*.js"
   ],
   "env": {
     "NODE_ENV": "development"

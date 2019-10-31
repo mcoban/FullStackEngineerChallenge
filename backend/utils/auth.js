@@ -23,7 +23,6 @@ const signUp = async (req, res) => {
   }
 
   try {
-    console.log(req.body)
     const employee = await Employee.create(req.body)
     const token = newToken(employee)
     return res.status(201).send({ token })

@@ -2,6 +2,8 @@ const express = require('express')
 const { json, urlencoded } = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const { config } = require('./config')
+const { connect } = require('./utils/db')
 const { signUp, signIn } = require('./utils/auth')
 // Router Defines
 //const adminRouter = require('./resources/admin/admin.router')
@@ -27,10 +29,15 @@ app.get('/', (req, res) => {
   })
 })
 
-const start = () => {
-  app.listen(3000, () => {
-    console.log('API Server is running on port 3000.')
-  })
+const start = async () => {
+  try {
+    await connect()
+    app.listen(config.port, () => {
+      console.log('Rest API Server is running on port 3000.')
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 module.exports.start = start

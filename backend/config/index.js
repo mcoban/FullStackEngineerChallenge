@@ -24,7 +24,8 @@ switch (env) {
     envConfig = require('./testing').config
     break
   default:
+    console.log('default')
     envConfig = require('./dev').config
 }
 
-module.exports = merge(baseConfig, envConfig)
+module.exports.config = merge(baseConfig, envConfig)
