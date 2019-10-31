@@ -22,6 +22,14 @@ const updateMe = async (req, res) => {
   }
 }
 
+const getOne = (req, res) => {
+  let id = req.params.id
+  console.log('ok')
+  res.json(id)
+}
+
 module.exports = {
-  me
+  me,
+  updateMe,
+  getOne
 }

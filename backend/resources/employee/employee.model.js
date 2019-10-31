@@ -18,7 +18,6 @@ const employeeSchema = new mongoose.Schema({
   },
   createdDate: {
     type: Date,
-    required: true,
     default: new Date()
   }
 })

@@ -2,7 +2,7 @@ const express = require('express')
 const { json, urlencoded } = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
-
+const { signUp, signIn } = require('./utils/auth')
 // Router Defines
 //const adminRouter = require('./resources/admin/admin.router')
 const employeeRoutuer = require('./resources/employee/employee.router')
@@ -16,7 +16,8 @@ app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
-//app.use('/admin', adminRouter)
+app.use('/signup', signUp)
+app.use('/signin', signIn)
 app.use('/employee', employeeRoutuer)
 //app.use('/review', reviewRouter)
 
